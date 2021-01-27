@@ -2,6 +2,7 @@
     <id>thief-pdf-idea</id>
     <name>thief-pdf-idea</name>
     <vendor email="1924533433@qq.com" url="https://github.com/Yukiterux/thief-pdf-idea">Yukiteru</vendor>
+    <idea-version since-build="173.0"/>
 
     <description><![CDATA[
     <p><b>This is a plug-in that can be read PDF in the IDE. </b></p>
