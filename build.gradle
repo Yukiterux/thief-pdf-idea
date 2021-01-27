@@ -1,0 +1,28 @@
+plugins {
+    id 'org.jetbrains.intellij' version '0.6.5'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.2.3'
+}
+repositories {     //repositories闭包
+    mavenLocal()   //配置先从本地仓库寻找jar包，优先寻找上一个配置，找到不执行下面的配置
+    mavenCentral() //配置从中央仓库寻找
+    google()       //第三方仓库
+    jcenter()      //代码托管库：设置之后可以在项目中轻松引用jcenter上的开源项目
+}
+
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
+dependencies{
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.22'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox-tools', version: '2.0.22'
+    compile group: 'org.apache.pdfbox', name: 'jbig2-imageio', version: '3.0.0'
+}

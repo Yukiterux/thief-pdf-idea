@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>com.thief.yuki.me</id>
+    <name>thief-pdf-idea</name>
+    <vendor email="1924533433@qq.com" url="http://www.yourcompan.com">Yukiteru</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin ere.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij" >
+        <!--canCloseContents 允许用户关闭-->
+        <toolWindow id="TerminalX" anchor="bottom" canCloseContents="true"
+                    icon="/icons/thief.png" factoryClass="com.thief.yuki.MainUi"/>
+
+        <projectConfigurable groupId="Other Settings" displayName="TerminalX Config" id="thiefPdf.id"
+                             instance="com.thief.yuki.Setting"/>
+        <applicationService
+                serviceImplementation="com.thief.yuki.PersistentState"/>
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!--Add your actions here -->
+        <action id="show-TerminalX" class="com.thief.yuki.ShowPdfAction" text="Show TerminalX" description="Show pdf">
+            <add-to-group group-id="WindowMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

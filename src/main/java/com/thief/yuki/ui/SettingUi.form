@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.thief.yuki.ui.SettingUi">
+  <grid id="27dc6" binding="mainPanel" layout-manager="FormLayout">
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:48px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:38px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:145px:noGrow"/>
+    <colspec value="left:6dlu:noGrow"/>
+    <colspec value="fill:144px:noGrow"/>
+    <colspec value="fill:141px:noGrow"/>
+    <colspec value="left:11dlu:noGrow"/>
+    <colspec value="fill:98px:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:12px:noGrow"/>
+    <constraints>
+      <xy x="20" y="20" width="1087" height="504"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="a9b1e" class="javax.swing.JLabel" binding="chooseFileLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="选择文件:"/>
+        </properties>
+      </component>
+      <component id="bd7ab" class="javax.swing.JTextField" binding="filePathText">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="10"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="6fb4d" class="javax.swing.JButton" binding="chooseFileButton">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="..."/>
+        </properties>
+      </component>
+      <component id="4df8a" class="javax.swing.JLabel" binding="chooseAlterLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="选择替换文件:"/>
+        </properties>
+      </component>
+      <component id="caf6a" class="javax.swing.JTextField" binding="alterFilePath">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="10"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="5882c" class="javax.swing.JButton" binding="chooseAlterButton">
+        <constraints>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="..."/>
+        </properties>
+      </component>
+      <component id="47ead" class="javax.swing.JLabel" binding="thiefKeyBehaviorLable">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="老板键行为:"/>
+        </properties>
+      </component>
+      <component id="3ee2f" class="javax.swing.JRadioButton" binding="hideRadio">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="隐藏界面"/>
+        </properties>
+      </component>
+      <component id="46ec5" class="javax.swing.JRadioButton" binding="showAlterRadio">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="展示替换文件"/>
+        </properties>
+      </component>
+      <component id="38c37" class="javax.swing.JLabel" binding="preLable">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="上一页热键:"/>
+        </properties>
+      </component>
+      <component id="d8ead" class="javax.swing.JTextField" binding="preText">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="5b242" class="javax.swing.JLabel" binding="nextLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="下一页热键:"/>
+        </properties>
+      </component>
+      <component id="73f36" class="javax.swing.JTextField" binding="nextText">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="954d" class="javax.swing.JLabel" binding="thiefKeyLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="老板键:"/>
+        </properties>
+      </component>
+      <component id="1bde" class="javax.swing.JTextField" binding="thiefKeyText">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="1504a" class="javax.swing.JLabel" binding="chooseTransparentLabel">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="是否透明某个RGB值:"/>
+        </properties>
+      </component>
+      <component id="c3317" class="javax.swing.JRadioButton" binding="noTransparent">
+        <constraints>
+          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value="否"/>
+        </properties>
+      </component>
+      <component id="dbefa" class="javax.swing.JRadioButton" binding="yesTransparent">
+        <constraints>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <selected value="false"/>
+          <text value="是"/>
+        </properties>
+      </component>
+      <component id="ceb36" class="javax.swing.JLabel" binding="rgbLabel">
+        <constraints>
+          <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="11"/>
+          <text value="需要透明的16进制RGB值:"/>
+        </properties>
+      </component>
+      <component id="56d3f" class="javax.swing.JTextField" binding="rgbText">
+        <constraints>
+          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <text value="#FFFFFF"/>
+        </properties>
+      </component>
+      <component id="cd10d" class="javax.swing.JTextField" binding="tipEdit">
+        <constraints>
+          <grid row="16" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="10"/>
+          <text value="修改设置后请手动重启IDE使设置生效"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="thiefGroup">
+      <member id="3ee2f"/>
+      <member id="46ec5"/>
+    </group>
+    <group name="transparentGroup">
+      <member id="c3317"/>
+      <member id="dbefa"/>
+    </group>
+  </buttonGroups>
+</form>
