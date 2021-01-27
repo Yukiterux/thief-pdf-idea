@@ -1,35 +1,35 @@
-### ²ÎÕÕThief-Book-Idea²å¼ş,Ô­´´[Á´½ÓµØÖ·](https://github.com/yisier/thief-book-idea "Á´½ÓµØÖ·")£¬°´ÕÕËûµÄÔ­ĞÍ¿ª·¢³öÁËÀàËÆ¹¦ÄÜ²é¿´PDFµÄIDEA²å¼ş¡£
+### å‚ç…§Thief-Book-Ideaæ’ä»¶,åŸåˆ›[é“¾æ¥åœ°å€](https://github.com/yisier/thief-book-idea "é“¾æ¥åœ°å€")ï¼ŒæŒ‰ç…§ä»–çš„åŸå‹å¼€å‘å‡ºäº†ç±»ä¼¼åŠŸèƒ½æŸ¥çœ‹PDFçš„IDEAæ’ä»¶ã€‚
 
-(1) ÉèÖÃ½çÃæ `File | Settings | Other Settings | TerminalX Config`
+(1) è®¾ç½®ç•Œé¢ `File | Settings | Other Settings | TerminalX Config`
 
-![image-20210127145536670](D:\Work\code\thief-pdf-idea\README.assets\image-20210127145536670.png)
+![image-20210127145536670](https://github.com/Yukiterux/thief-pdf-idea/blob/main/README.assets/image-20210127145536670.png)
 
-(2) Ö÷½çÃæ
+(2) ä¸»ç•Œé¢
 
-![image-20210127145627899](D:\Work\code\thief-pdf-idea\README.assets\image-20210127145627899.png)
+![image-20210127145627899](https://github.com/Yukiterux/thief-pdf-idea/blob/main/README.assets/image-20210127145536670.png)
 
-(2) .²Ù×÷ÌáÊ¾
+(2) .æ“ä½œæç¤º
 
-1) ¸üĞÂsettingÉèÖÃºó£¬¹Ø±ÕTerminalX´°¿Ú,ÔÚµ¼º½À¸WindowÖĞµã»÷ShowTerminalX;
+1) æ›´æ–°settingè®¾ç½®åï¼Œå…³é—­TerminalXçª—å£,åœ¨å¯¼èˆªæ Windowä¸­ç‚¹å‡»ShowTerminalX;
 
-3) ÀÏ°å¼ü£¬ALT+E£¬¼´¿ÉÒş²ØÖ÷Ò³Ãæ»òÕ¹Ê¾Ìæ»»ÎÄ¼ş
+3) è€æ¿é”®ï¼ŒALT+Eï¼Œå³å¯éšè—ä¸»é¡µé¢æˆ–å±•ç¤ºæ›¿æ¢æ–‡ä»¶
 
-# ÏÂÔØµØÖ·
+# ä¸‹è½½åœ°å€
 
-[Á´½Ó](https://github.com/Yukiterux/thief-pdf-idea/releases/download/1/thief-pdf-idea-1.0-SNAPSHOT.zip "Á´½Ó")
+[é“¾æ¥](https://github.com/Yukiterux/thief-pdf-idea/releases/download/1/thief-pdf-idea-1.0-SNAPSHOT.zip "é“¾æ¥")
 
 
 ------------
 
-## Ê¹ÓÃ½Ì³Ì
+## ä½¿ç”¨æ•™ç¨‹
 
-1).µ½releaseÖĞÏÂÔØjar°ü;
+1).åˆ°releaseä¸­ä¸‹è½½jaråŒ…;
 
-2).´ò¿ªIDEA,ÕÒµ½setting ÖĞµÄplugin£¬µã»÷Install Plugin from diskÑ¡ÔñÏÂÔØµÄjar°ü£¬°²×°²¢ÖØÆôIDEA;
+2).æ‰“å¼€IDEA,æ‰¾åˆ°setting ä¸­çš„pluginï¼Œç‚¹å‡»Install Plugin from diské€‰æ‹©ä¸‹è½½çš„jaråŒ…ï¼Œå®‰è£…å¹¶é‡å¯IDEA;
 
-3).½øÈëIDEAµÄSettingÒ³Ãæ£¬ÕÒµ½Other Settings\Thief-Book ConfigÑ¡Ïî£¬Ñ¡ÔñPDFÎÄ¼ş;
+3).è¿›å…¥IDEAçš„Settingé¡µé¢ï¼Œæ‰¾åˆ°Other Settings\Thief-Book Configé€‰é¡¹ï¼Œé€‰æ‹©PDFæ–‡ä»¶;
 
-4).Óä¿ìµÄÃşÓã°É£¡£¡£¡£¡
+4).æ„‰å¿«çš„æ‘¸é±¼å§ï¼ï¼ï¼ï¼
 
-5).µ±Äã²»Ğ¡ĞÄ½«´°¿Ú¹Ø±ÕÊ±£¬¿ÉÒÔÔÚWIndow²Ëµ¥ÏÂÑ¡Ôñshow thiefÖØĞÂ´ò¿ª;
+5).å½“ä½ ä¸å°å¿ƒå°†çª—å£å…³é—­æ—¶ï¼Œå¯ä»¥åœ¨WIndowèœå•ä¸‹é€‰æ‹©show thiefé‡æ–°æ‰“å¼€;
 
