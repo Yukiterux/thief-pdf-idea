@@ -1,11 +1,27 @@
 <idea-plugin>
-    <id>com.thief.yuki.me</id>
+    <id>thief-pdf-idea</id>
     <name>thief-pdf-idea</name>
-    <vendor email="1924533433@qq.com" url="http://www.yourcompan.com">Yukiteru</vendor>
+    <vendor email="1924533433@qq.com" url="https://github.com/Yukiterux/thief-pdf-idea">Yukiteru</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin ere.<br>
-    <em>most HTML tags may be used</em>
+    <p><b>This is a plug-in that can be read PDF in the IDE. </b></p>
+    <br/>
+    <p>
+    <b>
+    How to use?
+    <br/>
+    1.Choose your PDF file on the settings page
+    <br/>
+    2.restart IDE
+    <br/>
+    <p>
+    <b>
+    <br/>
+    <br/>
+    Settings page : File | Settings | Other Settings | TerminalX Config
+    <br/>
+    Boss key : Ctrl + E
+    <br/>
     ]]></description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
