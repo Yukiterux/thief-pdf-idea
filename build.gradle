@@ -2,7 +2,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.6.5'
 }
 
-group 'org.example'
+group 'com.xhw'
 version '1.0-SNAPSHOT'
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -18,8 +18,9 @@ repositories {     //repositories闭包
 
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      fix some bugs<br>
+      """
+    sinceBuild "162"
 }
 dependencies{
     compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.22'

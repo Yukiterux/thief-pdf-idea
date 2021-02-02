@@ -245,7 +245,7 @@
         <properties>
           <editable value="false"/>
           <horizontalAlignment value="10"/>
-          <text value="修改设置后请手动重启IDE使设置生效"/>
+          <text value="修改设置后请重新开启TerminalX使设置生效"/>
         </properties>
       </component>
     </children>

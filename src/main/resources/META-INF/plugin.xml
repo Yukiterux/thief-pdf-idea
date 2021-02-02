@@ -21,9 +21,10 @@
     <br/>
     Settings page : File | Settings | Other Settings | TerminalX Config
     <br/>
-    Boss key : Ctrl + E
+    Boss key : ALT + E
     <br/>
     ]]></description>
+
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -40,6 +41,7 @@
                 serviceImplementation="com.thief.yuki.PersistentState"/>
         <!-- Add your extensions here -->
     </extensions>
+    <idea-version since-build="162"/>
 
     <actions>
         <!--Add your actions here -->
