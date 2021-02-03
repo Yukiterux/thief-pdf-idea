@@ -13,10 +13,12 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.jetbrains.annotations.NotNull;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -70,12 +72,13 @@ public class MainUi implements ToolWindowFactory, DumbAware {
     /**
      * 当前是否替换文件
      **/
-    private boolean isAlter=false;
+    private boolean isAlter = false;
     /**
      * false;隐藏
      * 隐藏当前展示或展示替换文件
      **/
-    private boolean isShowFlag=false;
+    private boolean isShowFlag = false;
+
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         try {
@@ -94,15 +97,15 @@ public class MainUi implements ToolWindowFactory, DumbAware {
      */
     private JPanel initPanel() throws IOException {
         BufferedImage image = initPdfFile();
-        isShowFlag="1".equals(persistentState.getShowFlag());
-        isTransparent="1".equals(persistentState.getTransparented());
+        isShowFlag = "1".equals(persistentState.getShowFlag());
+        isTransparent = "1".equals(persistentState.getTransparented());
         if (StringUtils.isNotEmpty(persistentState.getAlterCurrentPage())) {
             alterCurrentPage = Integer.parseInt(persistentState.getAlterCurrentPage());
         }
         String transparentedRgb = persistentState.getTransparentedRgb().trim();
-        if (transparentedRgb != null&&transparentedRgb.length() > 1) {
-            String tmp=transparentedRgb.substring(1);
-            filterRgb=Integer.parseInt(tmp,16);
+        if (transparentedRgb != null && transparentedRgb.length() > 1) {
+            String tmp = transparentedRgb.substring(1);
+            filterRgb = Integer.parseInt(tmp, 16);
         }
         Mypanel mypanel = getMypanel(image, isTransparent, filterRgb);
         initJbScrollPanel(image.getWidth(), image.getHeight(), mypanel);
@@ -110,6 +113,8 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         panel.setLayout(new BorderLayout());
         panel.add(jbScrollPanel, BorderLayout.CENTER);
         panel.add(initOperationPanel(), BorderLayout.EAST);
+        // 注册应用程序全局键盘事件, 所有的键盘事件都会被此事件监听器处理.
+
         return panel;
     }
 
@@ -176,10 +181,10 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         jbScrollPanel.setViewportView(mypane);
         persistentState.setCurrentPage(String.valueOf(currentPage));
         persistentState.setAlterCurrentPage(String.valueOf(alterCurrentPage));
-        current.setText(String.valueOf(index+1));
+        current.setText(String.valueOf(index + 1));
     }
 
-    private void initAlterRenderer () throws IOException {
+    private void initAlterRenderer() throws IOException {
         if (alterRenderer != null) {
             return;
         }
@@ -197,7 +202,7 @@ public class MainUi implements ToolWindowFactory, DumbAware {
      * 初始化操作面板
      **/
     private JPanel initOperationPanel() {
-        isShowFlag="1".equals(persistentState.getShowFlag());
+        isShowFlag = "1".equals(persistentState.getShowFlag());
         // 总行数
         total.setText("/" + totalPage);
         JPanel panelRight = new JPanel();
@@ -217,8 +222,95 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         JButton down = initDownButton();
         panelRight.add(down, BorderLayout.EAST);
         //老板键
-        JButton boss = initBossButton(new JButton[]{fresh, up, down});
-        panelRight.add(boss, BorderLayout.SOUTH);
+//        JButton boss = initBossButton(new JButton[]{fresh, up, down});
+//        panelRight.add(boss, BorderLayout.SOUTH);
+        JButton[] buttons = {fresh, up, down};
+        try {
+            GlobalScreen.registerNativeHook();
+            GlobalScreen.addNativeKeyListener(new NativeKeyListener() {
+                @Override
+                public void nativeKeyTyped(NativeKeyEvent e) {
+
+//                    System.out.println("Key Typed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+                }
+
+                @Override
+                public void nativeKeyPressed(NativeKeyEvent e) {
+                    if ((e.getModifiers() & NativeKeyEvent.ALT_MASK)!=0 &&
+                            e.getKeyCode() == NativeKeyEvent.VC_LEFT) {
+                        try {
+                            if (!isAlter) {
+                                changePage(currentPage - 1, isAlter);
+                            } else {
+                                changePage(alterCurrentPage - 1, isAlter);
+                            }
+
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }else if ((e.getModifiers() & NativeKeyEvent.ALT_MASK)!=0 &&
+                            e.getKeyCode() == NativeKeyEvent.VC_RIGHT){
+                        try {
+                            if (!isAlter) {
+                                changePage(currentPage + 1, isAlter);
+                            } else {
+                                changePage(alterCurrentPage + 1, isAlter);
+                            }
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+                    }else if ((e.getModifiers() & NativeKeyEvent.ALT_MASK)!=0 &&
+                            e.getKeyCode() == NativeKeyEvent.VC_E){
+                        if (!isShowFlag) {
+                            if (hide) {
+                                for (JButton b : buttons) {
+                                    b.setVisible(true);
+                                }
+                                current.setVisible(true);
+                                total.setVisible(true);
+                                jbScrollPanel.setVisible(true);
+                            } else {
+                                for (JButton b : buttons) {
+                                    b.setVisible(false);
+                                }
+                                current.setVisible(false);
+                                total.setVisible(false);
+                                jbScrollPanel.setVisible(false);
+                            }
+                            hide = !hide;
+                        } else {
+                            isAlter = !isAlter;
+                            if (isAlter) {
+                                try {
+                                    changePage(alterCurrentPage, isAlter);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    changePage(currentPage, isAlter);
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
+                            }
+
+                        }
+                    }
+
+
+                }
+
+                @Override
+                public void nativeKeyReleased(NativeKeyEvent e) {
+//                    System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return panelRight;
     }
 
@@ -230,10 +322,10 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         current.setPreferredSize(new Dimension(50, 30));
         current.setOpaque(false);
         current.setBorder(JBUI.Borders.empty(0));
-        if (!isAlter){
-            current.setText(currentPage+1 + "");
-        }else {
-            current.setText(alterCurrentPage+1 + "");
+        if (!isAlter) {
+            current.setText(currentPage + 1 + "");
+        } else {
+            current.setText(alterCurrentPage + 1 + "");
         }
         current.addKeyListener(new KeyAdapter() {
             @Override
@@ -247,7 +339,7 @@ public class MainUi implements ToolWindowFactory, DumbAware {
                         if (i <= 0) {
                             i = 0;
                         }
-                        changePage(i-1,isAlter);
+                        changePage(i - 1, isAlter);
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
@@ -267,7 +359,7 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         refresh.setBorderPainted(false);
         refresh.addActionListener(e -> {
             try {
-                changePage(currentPage,isAlter);
+                changePage(currentPage, isAlter);
             } catch (Exception newE) {
                 newE.printStackTrace();
             }
@@ -285,10 +377,10 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         afterB.setBorderPainted(false);
         afterB.addActionListener(e -> {
             try {
-                if (!isAlter){
-                    changePage(currentPage - 1,isAlter);
-                }else{
-                    changePage(alterCurrentPage - 1,isAlter);
+                if (!isAlter) {
+                    changePage(currentPage - 1, isAlter);
+                } else {
+                    changePage(alterCurrentPage - 1, isAlter);
                 }
 
             } catch (IOException e1) {
@@ -296,9 +388,9 @@ public class MainUi implements ToolWindowFactory, DumbAware {
             }
         });
 
-        afterB.registerKeyboardAction(afterB.getActionListeners()[0],
-                KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, InputEvent.ALT_MASK),
-                JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        afterB.registerKeyboardAction(afterB.getActionListeners()[0],
+//                KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, InputEvent.ALT_MASK),
+//                JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         return afterB;
     }
@@ -312,19 +404,19 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         nextB.setContentAreaFilled(false);
         nextB.setBorderPainted(false);
         nextB.addActionListener(e -> {
-                try {
-                    if (!isAlter){
-                        changePage(currentPage +1,isAlter);
-                    }else{
-                        changePage(alterCurrentPage +1,isAlter);
-                    }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+            try {
+                if (!isAlter) {
+                    changePage(currentPage + 1, isAlter);
+                } else {
+                    changePage(alterCurrentPage + 1, isAlter);
                 }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
-        nextB.registerKeyboardAction(nextB.getActionListeners()[0],
-                KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, InputEvent.ALT_MASK),
-                JComponent.WHEN_IN_FOCUSED_WINDOW);
+//        nextB.registerKeyboardAction(nextB.getActionListeners()[0],
+//                KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, InputEvent.ALT_MASK),
+//                JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         return nextB;
     }
@@ -339,42 +431,42 @@ public class MainUi implements ToolWindowFactory, DumbAware {
         bossB.setContentAreaFilled(false);
         bossB.setBorderPainted(false);
         bossB.addActionListener(e -> {
-           if (!isShowFlag){
-               if (hide) {
-                   for (JButton b : buttons) {
-                       b.setVisible(true);
-                   }
-                   current.setVisible(true);
-                   total.setVisible(true);
-                   jbScrollPanel.setVisible(true);
-               } else {
-                   for (JButton b : buttons) {
-                       b.setVisible(false);
-                   }
-                   current.setVisible(false);
-                   total.setVisible(false);
-                   jbScrollPanel.setVisible(false);
-               }
-               hide=!hide;
-           }else{
-               isAlter=!isAlter;
-               if (isAlter) {
-                   try {
-                       changePage(alterCurrentPage,isAlter);
-                   } catch (IOException ioException) {
-                       ioException.printStackTrace();
-                   }
-               }else{
-                   try {
-                       changePage(currentPage,isAlter);
-                   } catch (IOException ioException) {
-                       ioException.printStackTrace();
-                   }
-               }
+            if (!isShowFlag) {
+                if (hide) {
+                    for (JButton b : buttons) {
+                        b.setVisible(true);
+                    }
+                    current.setVisible(true);
+                    total.setVisible(true);
+                    jbScrollPanel.setVisible(true);
+                } else {
+                    for (JButton b : buttons) {
+                        b.setVisible(false);
+                    }
+                    current.setVisible(false);
+                    total.setVisible(false);
+                    jbScrollPanel.setVisible(false);
+                }
+                hide = !hide;
+            } else {
+                isAlter = !isAlter;
+                if (isAlter) {
+                    try {
+                        changePage(alterCurrentPage, isAlter);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                } else {
+                    try {
+                        changePage(currentPage, isAlter);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
 
-           }
+            }
         });
-        bossB.setMnemonic(KeyEvent.VK_E);
+//        bossB.setMnemonic(KeyEvent.VK_E);
         return bossB;
     }
 
